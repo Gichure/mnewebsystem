@@ -46,5 +46,8 @@ public class Barrack implements Serializable{
 	
 	@Column(name = "name", unique = true, nullable = false)
 	private String name;
+	
+	@Column(name = "coordinates")
+	private String coordinates;
 
 }

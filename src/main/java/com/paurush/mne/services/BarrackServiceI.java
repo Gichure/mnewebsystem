@@ -16,5 +16,9 @@ public interface BarrackServiceI {
 	public Barrack save(Barrack barrack);
 	
 	public List<Barrack> list();
+	
+	public Barrack findById(Long id);
+	
+	public void deleteById(Long id);
 
 }

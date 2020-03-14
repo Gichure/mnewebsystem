@@ -32,7 +32,17 @@ public class BarrackService implements BarrackServiceI{
 	@Override
 	public List<Barrack> list() {
 		return repository.findAll();
-	};
+	}
+
+	@Override
+	public Barrack findById(Long id) {
+		return repository.getOne(id);
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		repository.deleteById(id);
+	}
 	
 
 }

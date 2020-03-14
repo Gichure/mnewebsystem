@@ -33,11 +33,11 @@
                     <li><a href="./monitoring">Monitoring</a></li>
                     <li><a href="./performance">Performance</a></li>
                     <li><a href="./alleviation">Alleviation</a></li>
-                   <li><a href="./sitting">Sitting</a></li>
+                   <li><a href="./siting">siting</a></li>
                 </ul> 
                 <ul class="nav navbar-nav navbar-right">
-                    <li ><a href="./barrack">Add Barrack</a></li>
-                    <li class="active"><a href="./family">Add Family <span class="sr-only">(current)</span></a></li>
+                    <li ><a href="./family">Add Barrack</a></li>
+                    <li class="active"><a href="./family">Add Street Family<span class="sr-only">(current)</span></a></li>
                     <li><a href="./child">Add Child</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
@@ -45,22 +45,30 @@
     </nav>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <!--Usage of models we wrote in WepAppController th:text="'Welcome to basic Bootstrap with Spring Boot created by ' + ${username} -->
-        <p>
-            <a class="btn btn-lg btn-primary" href="./assessment" role="button">Assessment &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./monitoring" role="button">Monitoring &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./performance" role="button">Performance Analysis &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./alleviation" role="button">Alleviation &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./dashboard" role="button">Sitting &raquo;</a>
-        </p>
+       <h4>Street Family Details</h4>
+			<form action="#" th:action="@{/family}" th:object="${family}" method="post">
+				<div class="row">
+					<div class="form-group col-md-8">
+	                    <label for="code" class="col-form-label">Code</label> 
+	                    <input type="text" th:field="*{code}" class="form-control" id="code" placeholder="Street Family Code" value="${family.code}"/>
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="familyName" class="col-form-label">Family Name</label> 
+	                    <input type="text" th:field="*{familyName}" class="form-control" id="familyName" placeholder="Street Family Name" value="${family.familyName}" />
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="name" class="col-form-label">Coordinates</label> 
+	                    <input type="text" th:field="*{coordinates}" class="form-control" id="name" placeholder="Street Family Coordinates(Optional)" value="${family.coordinates}" />
+	                </div>
+					<input type="hidden" id="id" th:field="*{id}" value="${family.id}">
+					 <div class="col-md-6">
+                         <input type="submit" class="btn btn-primary" value="Save">
+                     </div>
+                     <div class="col-md-6">
+                         <input type="reset" class="btn btn-danger" value="Clear">
+                     </div>       
+				</div>
+			</form>
     </div>
 </div> <!-- /container -->
 <!-- Bootstrap core JavaScript

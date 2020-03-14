@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.paurush.mne.models.Barrack;
+import com.paurush.mne.models.StreetFamily;
 import com.paurush.mne.services.BarrackServiceI;
+import com.paurush.mne.services.StreetFamilyServiceI;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,44 +27,44 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
-public class BarrackController {
+public class StreetFamilyController {
 	
 	@Autowired
-	private BarrackServiceI service;
+	private StreetFamilyServiceI service;
 	
-	@PostMapping(value = "/barrack")
-	public String save(@ModelAttribute Barrack barrack, Model model) {
-		barrack = service.save(barrack);
-		return "redirect:/barracks";
+	@PostMapping(value = "/family")
+	public String save(@ModelAttribute StreetFamily family, Model model) {
+		family = service.save(family);
+		return "redirect:/families";
 	}
 	
-	@GetMapping(value = "/barracks")
+	@GetMapping(value = "/families")
 	public String list(Model model) {
-		model.addAttribute("barracks", service.list());	
-		log.info("Barracks: "+service.list().size());
-		return "barracks";
+		model.addAttribute("families", service.list());	
+		log.info("Families: "+service.list().size());
+		return "families";
 	}
 	
-	@GetMapping(value = {"/barrack","/barrack/{id}"})
-	public String barrack(Model model,@PathVariable Optional<Long> id) {
+	@GetMapping(value = {"/family","/family/{id}"})
+	public String family(Model model,@PathVariable Optional<Long> id) {
 		if (id.isPresent()) {
 			log.info("Editting "+id.get());
-			Barrack barrack = service.findById(id.get());
-			if(barrack == null)
-				barrack = Barrack.builder().build();		
-			model.addAttribute("barrack",barrack);	
+			StreetFamily family = service.findById(id.get());
+			if(family == null)
+				family = StreetFamily.builder().build();		
+			model.addAttribute("family",family);	
         } else {
         	log.info("New record ... ");
-        	model.addAttribute("barrack", Barrack.builder().build());
+        	model.addAttribute("family", StreetFamily.builder().build());
         }
-		return "barrack";
+		return "family";
 	}
 	
-	@RequestMapping(value = "/barrack/delete/{id}")
+	@RequestMapping(value = "/family/delete/{id}")
 	public String delete(@PathVariable("id") Long id, Model model){		
 		log.info("Deleting ... "+id);
 		service.deleteById(id);
-		return "redirect:/barracks";
+		return "redirect:/families";
 	}
 	
 }

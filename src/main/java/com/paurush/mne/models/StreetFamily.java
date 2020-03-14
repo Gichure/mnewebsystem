@@ -41,10 +41,16 @@ public class StreetFamily implements Serializable {
 	@Column(name = "id", unique = true, updatable = false, nullable = false)
 	private Long id;
 	
+	@Column(name = "code", unique = true, nullable = false)
+	private String code;
+	
 	@Column(name = "family_name", unique = true, nullable = false)
 	private String familyName;
 	
 	@Column(name = "town")
 	private String town;	
+	
+	@Column(name = "coordinates")
+	private String coordinates;
 
 }

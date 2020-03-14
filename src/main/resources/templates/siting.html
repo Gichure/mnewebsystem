@@ -33,7 +33,7 @@
                     <li><a href="./monitoring">Monitoring</a></li>
                     <li><a href="./performance">Performance</a></li>
                     <li><a href="./alleviation">Alleviation</a></li>
-                   <li class="active"><a href="./sitting">Sitting</a></li>
+                   <li class="active"><a href="./siting">siting</a></li>
                 </ul>  
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./barrack">Add Barrack</a></li>
@@ -45,22 +45,46 @@
     </nav>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <!--Usage of models we wrote in WepAppController th:text="'Welcome to basic Bootstrap with Spring Boot created by ' + ${username} -->
-        <p>
-            <a class="btn btn-lg btn-primary" href="./assessment" role="button">Assessment &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./monitoring" role="button">Monitoring &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./performance" role="button">Performance Analysis &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./alleviation" role="button">Alleviation &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./sitting" role="button">Sitting &raquo;</a>
-        </p>
+        <div th:if="${not #lists.isEmpty(children)}" class="md-12 xs-12">
+		<h3>Siting Map</h3>
+		<p class="my-5">
+                <a href="./child" class="btn btn-success">Add Child</a>
+            </p>
+		<table class="table table-striped table-responsive">
+			<thead>
+				<tr>
+					<th hidden="true">Id</th>
+					<th hidden="true">Code</th>
+					<th>First Name</th>
+					<th>Other Names</th>
+					<th>Street Family</th>
+					<th>Barrack</th>
+					<th>Reason</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="child : ${children}">
+					<td th:text="${child.id}" hidden="true"></td>
+					<td th:text="${child.firstName}"></td>
+					<td th:text="${child.otherNames}"></td>
+					<td th:text="${child.family.familyName}"></td>
+					<td th:text="${child.barrack.name}"></td>
+					<td th:text="${child.reason}"></td>
+					<td>
+	                    <a th:href="@{/child/{id}(id=${child.id})}"
+	                             class="btn btn-primary">Edit
+	                    </a>
+	                </td>
+	                <td>
+	                    <a th:href="@{/child/delete/{id}(id=${child.id})}" class="btn btn-danger">Delete
+	                    </a>
+	                </td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
     </div>
 </div> <!-- /container -->
 <!-- Bootstrap core JavaScript

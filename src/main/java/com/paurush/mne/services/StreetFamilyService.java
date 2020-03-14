@@ -34,4 +34,14 @@ public class StreetFamilyService implements StreetFamilyServiceI{
 		return repository.findAll();
 	}
 
+	@Override
+	public StreetFamily findById(Long id) {
+		return repository.getOne(id);
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		repository.deleteById(id);
+	}
+
 }

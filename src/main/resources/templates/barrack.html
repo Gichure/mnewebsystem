@@ -33,7 +33,7 @@
                     <li><a href="./monitoring">Monitoring</a></li>
                     <li><a href="./performance">Performance</a></li>
                     <li><a href="./alleviation">Alleviation</a></li>
-                   <li><a href="./sitting">Sitting</a></li>
+                   <li><a href="./siting">siting</a></li>
                 </ul> 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="./barrack">Add Barrack <span class="sr-only">(current)</span></a></li>
@@ -45,11 +45,29 @@
     </nav>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>New Barrack</h1>
+        <h4>Barrack Details</h4>
 			<form action="#" th:action="@{/barrack}" th:object="${barrack}" method="post">
-				<p>Code: <input type="text" th:field="*{code}"/></p>
-				<p>Name: <input type="text" th:field="*{name}"/></p>
-				<p><input type="submit" class="primary" value="Submit"/> <input class="primary" type="reset" value="Reset"/></p>
+				<div class="row">
+					<div class="form-group col-md-8">
+	                    <label for="code" class="col-form-label">Code</label> 
+	                    <input type="text" th:field="*{code}" class="form-control" id="code" placeholder="Barrack Code" value="${barrack.code}"/>
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="name" class="col-form-label">Name</label> 
+	                    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Barrack Name" value="${barrack.name}" />
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="name" class="col-form-label">Coordinates</label> 
+	                    <input type="text" th:field="*{coordinates}" class="form-control" id="name" placeholder="Barrack Coordinates(Optional)" value="${barrack.coordinates}" />
+	                </div>
+					<input type="hidden" id="id" th:field="*{id}" value="${barrack.id}">
+					 <div class="col-md-6">
+                         <input type="submit" class="btn btn-primary" value="Save">
+                     </div>
+                     <div class="col-md-6">
+                         <input type="reset" class="btn btn-danger" value="Clear">
+                     </div>       
+				</div>
 			</form>
     </div>
 </div> <!-- /container -->

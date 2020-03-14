@@ -33,10 +33,10 @@
                     <li><a href="./monitoring">Monitoring</a></li>
                     <li><a href="./performance">Performance</a></li>
                     <li><a href="./alleviation">Alleviation</a></li>
-                   <li><a href="./sitting">Sitting</a></li>
+                   <li><a href="./siting">siting</a></li>
                 </ul> 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="./barrack">Add Barrack <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="./barrack">Add Barrack</a></li>
                     <li><a href="./family">Add Family</a></li>
                     <li><a href="./child">Add Child</a></li>
                 </ul>
@@ -45,19 +45,39 @@
     </nav>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <div th:if="${not #lists.isEmpty(persons)}">
-		<h2>Person List</h2>
-		<table class="glyphicon glyphicon-calendar">
-			<tr>
-				<th>Id</th>
-				<th>Code</th>
-				<th>Name</th>
-			</tr>
+        <div th:if="${not #lists.isEmpty(barracks)}" class="md-12 xs-12">
+		<h3>Barracks List</h3>
+		<p class="my-5">
+                <a href="/barrack" class="btn btn-success">Add Barrack</a>
+            </p>
+		<table class="table table-striped table-responsive">
+			<thead>
+				<tr>
+					<th hidden="true">Id</th>
+					<th>Code</th>
+					<th>Name</th>
+					<th>Coordinates</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
 				<tr th:each="barrack : ${barracks}">
-				<td th:text="${barrack.id}"></td>
-				<td th:text="${barrack.code}"></td>
-				<td th:text="${barrack.name}"></td>
-			</tr>
+					<td th:text="${barrack.id}" hidden="true"></td>
+					<td th:text="${barrack.code}"></td>
+					<td th:text="${barrack.name}"></td>
+					<td th:text="${barrack.coordinates}"></td>
+					<td>
+	                    <a th:href="@{/barrack/{id}(id=${barrack.id})}"
+	                             class="btn btn-primary">Edit
+	                    </a>
+	                </td>
+	                <td>
+	                    <a th:href="@{/barrack/delete/{id}(id=${barrack.id})}" class="btn btn-danger">Delete
+	                    </a>
+	                </td>
+				</tr>
+			</tbody>
 		</table>
     </div>
 </div> <!-- /container -->

@@ -53,9 +53,12 @@ public class Child implements Serializable{
 	
 	@Column(name = "othernames")
 	private String otherNames;
+	
+	@Column(name = "surname")
+	private String surname;
 		
 	@Column(name = "year_enrolled", nullable = false)
-	private Integer yearEnrolled;
+	private int yearEnrolled;
 	
 	@ManyToOne(optional = false)
 	private Barrack barrack;
@@ -77,5 +80,11 @@ public class Child implements Serializable{
 	
 	@ManyToOne
 	private StreetFamily family;
+	
+	@Transient
+	private Long familyId;
+	
+	@Transient
+	private Long barrackId;
 
 }

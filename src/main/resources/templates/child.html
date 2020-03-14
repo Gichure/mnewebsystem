@@ -33,11 +33,11 @@
                     <li><a href="./monitoring">Monitoring</a></li>
                     <li><a href="./performance">Performance</a></li>
                     <li><a href="./alleviation">Alleviation</a></li>
-                   <li><a href="./sitting">Sitting</a></li>
+                   <li><a href="./siting">siting</a></li>
                 </ul> 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./barrack">Add Barrack</a></li>
-                    <li><a href="./family">Add Family</a></li>
+                    <li><a href="./child">Add Family</a></li>
                     <li class="active"><a href="./child">Add Child<span class="sr-only">(current)</span></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
@@ -45,23 +45,72 @@
     </nav>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <!--Usage of models we wrote in WepAppController th:text="'Welcome to basic Bootstrap with Spring Boot created by ' + ${username} -->
-        <p>
-            <a class="btn btn-lg btn-primary" href="./assessment" role="button">Assessment &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./monitoring" role="button">Monitoring &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./performance" role="button">Performance Analysis &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./alleviation" role="button">Alleviation &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./dashboard" role="button">Sitting &raquo;</a>
-        </p>
-    </div>
+   		<h4>Child Details</h4>
+			<form action="#" th:action="@{/child}" th:object="${child}" method="post">
+				<div class="row">
+					<div class="form-group col-md-8">
+	                    <label for="firstName" class="col-form-label">First Name</label> 
+	                    <input type="text" th:field="*{firstName}" class="form-control" id="firstName" placeholder="First Name" value="${child.firstName}"/>
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="otherNames" class="col-form-label">Other Names</label> 
+	                    <input type="text" th:field="*{otherNames}" class="form-control" id="otherNames" placeholder="Other names" value="${child.otherNames}" />
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="gender" class="col-form-label">Gender</label> <br/>
+	                	<select  class="form-control"  id="gender" th:field="*{gender}">
+						    <option th:value="'MALE'" th:text="Male"></option>
+						    <option th:value="'FEMALE'" th:text="Female"></option>
+						    <option th:value="'UNKNOWN'" th:text="Unknown"></option>
+						</select>
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="status" class="col-form-label">Current Status</label> <br/>
+	                	<select  class="form-control"  id="status" th:field="*{status}">
+						    <option th:value="'ONGOING'" th:text="On-Going"></option>
+						    <option th:value="'COMPLETED'" th:text="Completed"></option>
+						</select>
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="programType" class="col-form-label">Program</label>  <br/>
+	                	<select  class="form-control" id="programType" th:field="*{programType}">
+						    <option th:value="'BOARDING'" th:text="'Boarding School'"></option>
+						    <option th:value="'DAY'" th:text="'Primary School'"></option>
+						    <option th:value="'LUNCH'" th:text="'Lunch program'"></option>
+						</select>
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="yearEnrolled" class="col-form-label">Year Enrolled</label> 
+	                    <input type="number" th:field="*{yearEnrolled}" class="form-control" id="yearEnrolled" placeholder="Year Enrolled" value="${child.yearEnrolled}" />
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="barrackId" class="col-form-label">Barrack</label>  <br/>
+	                	<select  class="form-control" id="barrackId" th:field="*{barrackId}">
+						    <option value="0">Select Barrack</option>
+            				<option th:each="barrack : ${barracks}" th:value="${barrack.id}" th:text="${barrack.name}"></option>
+						</select>
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="familyId" class="col-form-label">Street Family</label>  <br/>
+	                	<select  class="form-control" id="familyId" th:field="*{familyId}">
+						    <option value="0">Select Street Family</option>
+            				<option th:each="family : ${families}" th:value="${family.id}" th:text="${family.familyName}"></option>
+						</select>
+	                </div>
+	                <div class="form-group col-md-8">
+	                    <label for="reason" class="col-form-label">Remarks</label> 
+	                    <input type="text" th:field="*{reason}" class="form-control" id="reason" placeholder="Remarks/Comments (Optional)" value="${child.reason}" />
+	                </div>
+	                
+					<input type="hidden" id="id" th:field="*{id}" value="${child.id}">
+					 <div class="col-md-6">
+                         <input type="submit" class="btn btn-primary" value="Save">
+                     </div>
+                     <div class="col-md-6">
+                         <input type="reset" class="btn btn-danger" value="Clear">
+                     </div>       
+				</div>
+			</form>
 </div> <!-- /container -->
 <!-- Bootstrap core JavaScript
 ================================================== -->

@@ -3,6 +3,7 @@
  */
 package com.paurush.mne.services;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,15 +39,6 @@ public class ChildService implements ChildServiceI{
 
 	@Override
 	public Child save(Child child) {
-		log.info("Saving...");
-		log.info("Saving..."+child.getBarrackId());
-		log.info("Saving..."+child.getFamilyId());
-		log.info("Saving..."+child.getGender());
-		log.info("Saving..."+child.getStatus());
-		log.info("Saving..."+child.getProgramType());
-		log.info("Saving..."+child.getFirstName());
-		log.info("Saving..."+child.getOtherNames());
-		log.info("Saving..."+child.getSurname());
 		try {
 			if(child.getBarrackId() != null && child.getFamilyId() != null) {
 				StreetFamily family = streetFamilyRepository.getOne(child.getFamilyId());
@@ -74,6 +66,11 @@ public class ChildService implements ChildServiceI{
 	@Override
 	public void deleteById(Long id) {
 		repository.deleteById(id);
+	}
+
+	@Override
+	public List<Child> findByYearEnrolled(Integer year, Long barrackId) {
+		return repository.findByYearEnrolledAndBarrack_Id(year, barrackId);
 	}
 
 }

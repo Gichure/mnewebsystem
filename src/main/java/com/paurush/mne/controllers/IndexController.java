@@ -7,10 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.paurush.mne.models.Barrack;
 import com.paurush.mne.models.Child;
 import com.paurush.mne.models.StreetFamily;
+import com.paurush.mne.services.BarrackServiceI;
 import com.paurush.mne.services.ChildServiceI;
 
 /**
@@ -22,6 +27,9 @@ public class IndexController {
 	
 	@Autowired
 	private ChildServiceI service;
+	
+	@Autowired
+	private BarrackServiceI barrackService;
 
 	@GetMapping("/")
     public String index(Model model) {
@@ -52,11 +60,12 @@ public class IndexController {
     }
 	
 	@GetMapping("/assessment")
-    public String assessment(Model model) {
-		model.addAttribute("children", service.list());
+    public String assessment(Model model, @RequestParam(value = "barrackId", required = false) Long barrackId, @RequestParam(value = "year", required = false) Integer year) {
+		model.addAttribute("barracks", barrackService.list());
+		model.addAttribute("children", service.findByYearEnrolled(year,barrackId));
         return "assessment";
     }
-	 
+	
 	@GetMapping("/siting")
     public String siting(Model model) {
 		model.addAttribute("children", service.list());

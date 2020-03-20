@@ -45,22 +45,74 @@
     </nav>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron text-center">
-       <h3 th:text="'Select a menu below to proceed or select from the menu above for quick access.'"></h3>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./assessment" role="button">Assessment &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./monitoring" role="button">Monitoring &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./performance" role="button">Performance Analysis &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./alleviation" role="button">Alleviation &raquo;</a>
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="./siting" role="button">Siting &raquo;</a>
-        </p>
+     <h3 th:text="'Select a menu below to proceed or select from the menu above for quick access.'"></h3>
+	    <div class="row">
+			<div class="col-sm-6">
+	    	    <div class="hero-widget well well-sm">
+	                <div class="icon">
+	                     <i class="glyphicon glyphicon-user"></i>
+	                </div>
+	                <div class="text">
+	                    <label class="text-muted">Number of street children, Mapping of street children family</label>
+	                </div>
+	                <div class="options">
+	                    <a href="./assessment" class="btn btn-primary btn-lg">Assessment</a>
+	                </div>
+	            </div>
+			</div>
+	        <div class="col-sm-6">
+	            <div class="hero-widget well well-sm">
+	                <div class="icon">
+	                     <i class="glyphicon glyphicon-tags"></i>
+	                </div>
+	                <div class="text">
+	                    <label class="text-muted">Performance of the different interventions</label>
+	                </div>
+	                <div class="options">
+	                    <a href="./monitoring" class="btn btn-primary btn-lg">Monitoring</a>
+	                </div>
+	            </div>
+			</div>
+	        <div class="col-sm-6">
+	            <div class="hero-widget well well-sm">
+	                <div class="icon">
+	                     <i class="glyphicon glyphicon-signal"></i>
+	                </div>
+	                <div class="text">
+	                    <label class="text-muted">View the list of street children from that particular barracks who integrated back to the family or have completed education</label>
+	                </div>
+	                <div class="options">
+	                    <a  href="./performance"  class="btn btn-primary btn-lg">Performance Analysis</a>
+	                </div>
+	            </div>
+	    	</div>
+	        <div class="col-sm-6">
+	            <div class="hero-widget well well-sm">
+	                <div class="icon">
+	                     <i class="glyphicon glyphicon-cog"></i>
+	                </div>
+	                <div class="text">
+	                    <label class="text-muted">View child’s primary and secondary intervention as per the selection</label>
+	                </div>
+	                <div class="options">
+	                    <a href="./alleviation" class="btn btn-primary btn-lg">Alleviation</a>
+	                </div>
+	            </div>
+			</div>
+			<div class="col-sm-6">
+	            <div class="hero-widget well well-sm">
+	                <div class="icon">
+	                     <i class="glyphicon glyphicon-cog"></i>
+	                </div>
+	                <div class="text">
+	                    <label class="text-muted">View the map area of the barracks, Nearest Health facility and the Street Family</label>
+	                </div>
+	                <div class="options">
+	                    <a href="./siting" class="btn btn-primary btn-lg">Siting</a>
+	                </div>
+	            </div>
+			</div>
+		</div>
     </div>
 </div> <!-- /container -->
 <!-- Bootstrap core JavaScript

@@ -14,8 +14,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Gender {
 	
-	FEMALE,
-	MALE,
-	UNKNOWN;
+	FEMALE("Female"),
+	MALE("Male"),
+	UNKNOWN("Unknown");
+	
+	private String name;
 
 }

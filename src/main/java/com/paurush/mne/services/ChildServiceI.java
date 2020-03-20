@@ -21,5 +21,9 @@ public interface ChildServiceI {
 	public Child findById(Long id);
 	
 	public void deleteById(Long id);
+	
+	public List<Child> findByYearEnrolled(Integer year, Long barrackId);
+	
+	
 
 }

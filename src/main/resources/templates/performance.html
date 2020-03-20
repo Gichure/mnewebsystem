@@ -45,11 +45,11 @@
     </nav>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-       <div th:if="${not #lists.isEmpty(children)}" class="md-12 xs-12">
-		<h3>Street Children List</h3>
+    	<h3>Street Children List</h3>
 		<p class="my-5">
-                <a href="./child" class="btn btn-success">Add Child</a>
-            </p>
+             <a href="./child" class="btn btn-success">Add Child</a>
+         </p>
+       <div th:if="${not #lists.isEmpty(children)}" class="md-12 xs-12">
 		<table class="table table-striped table-responsive">
 			<thead>
 				<tr>
@@ -82,6 +82,9 @@
 				</tr>
 			</tbody>
 		</table>
+    </div>
+    <div th:if="${#lists.isEmpty(children)}" class="md-12 xs-12">
+    	<p class="text-center text-danger">There are no records by that criteria. Add new or change filtering criteria. </p>
     </div>
     </div>
 </div> <!-- /container -->

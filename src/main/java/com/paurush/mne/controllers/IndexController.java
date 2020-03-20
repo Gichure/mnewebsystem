@@ -42,20 +42,23 @@ public class IndexController {
     }
 	
 	@GetMapping("/alleviation")
-    public String alleviation(Model model) {
+    public String alleviation(Model model, @RequestParam(value = "childId", required = false) Long childId) {
 		model.addAttribute("children", service.list());
+		model.addAttribute("child", service.findById(childId));
         return "alleviation";
     }
 	
 	@GetMapping("/performance")
-    public String performance(Model model) {
-		model.addAttribute("children", service.list());
+    public String performance(Model model, @RequestParam(value = "barrackId", required = false) Long barrackId, @RequestParam(value = "year", required = false) Integer year) {
+		model.addAttribute("barracks", barrackService.list());
+		model.addAttribute("children", service.findByYearEnrolled(year,barrackId));
         return "performance";
     }
 	
 	@GetMapping("/monitoring")
-    public String monitoring(Model model) {
-		model.addAttribute("children", service.list());
+    public String monitoring(Model model, @RequestParam(value = "barrackId", required = false) Long barrackId, @RequestParam(value = "year", required = false) Integer year) {
+		model.addAttribute("barracks", barrackService.list());
+		model.addAttribute("children", service.findByYearEnrolled(year,barrackId));
         return "monitoring";
     }
 	

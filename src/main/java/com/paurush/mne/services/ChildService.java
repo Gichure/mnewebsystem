@@ -60,6 +60,8 @@ public class ChildService implements ChildServiceI{
 
 	@Override
 	public Child findById(Long id) {
+		if(id == null)
+			id = 0L;
 		return repository.getOne(id);
 	}
 
